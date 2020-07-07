@@ -1,3 +1,6 @@
+from list import LinkedList
+
+
 class HashTableEntry:
     """
     Linked List hash table key/value pair
@@ -16,7 +19,7 @@ class HashTable:
     that accepts string keys
     Implement this.
     """
-    def __init__(self, capacity):
+    def __init__(self, capacity= MIN_CAPACITY):
         # Your code here
         self.capacity = capacity
         self.storage = [None] * capacity
@@ -82,6 +85,21 @@ class HashTable:
         # Your code here
         hash_val = self.hash_index(key)
         self.storage[hash_val] = value
+         
+        current = self.storage[hash_val].head
+        while current:
+            if current.key == key:
+                current.value = value
+            current = current.next
+            
+        entry = HashTableEntry(key, value)
+        self.storage[hash_val].insert_at_head(entry)
+        self.count += 1
+
+
+
+
+
 
     def delete(self, key):
         """
@@ -100,8 +118,15 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        hash_value = self.hash_index(key)
-        return self.storage[hash_value]
+        # hash_value = self.hash_index(key)
+        # return self.storage[hash_value]
+        slot = self.hash_index(key)
+        current = self.storage[slot].head
+        while current:
+            if current.key == key:
+                return current.value
+            current = current.next
+        return None
 
     def resize(self, new_capacity):
         """
@@ -110,7 +135,15 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        pass
+        if self.get_load_factor() > 0.7:
+            old_storage = self.storage
+            self.storage = [LinkedList()] * new_capacity
+            for item in old_storage:
+                current = item.head
+                while current:
+                    self.put(current.key, current.value)
+                    current = current.next
+            self.capacity = new_capacity
 
 
 
