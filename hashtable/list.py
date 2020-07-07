@@ -53,28 +53,15 @@ class LinkedList:
 
         cur = self.head
 
-​
-
-        # Special case of deleting the head
-
-​
-
+​        # Special case of deleting the head
         if cur.value == value:  # Are we deleting the head?
-
             self.head = self.head.next
-
             cur.next = None
-
             return cur
 
 ​        # General case
-
 ​        prev = cur
-
         cur = cur.next
-
-​
-
         while cur is not None:
 
             if cur.value == value:

@@ -2,16 +2,13 @@ class HashTableEntry:
     """
     Linked List hash table key/value pair
     """
-
     def __init__(self, key, value):
         self.key = key
         self.value = value
         self.next = None
 
-
 # Hash table can't have fewer than this many slots
 MIN_CAPACITY = 8
-
 
 class HashTable:
     """
@@ -19,7 +16,6 @@ class HashTable:
     that accepts string keys
     Implement this.
     """
-
     def __init__(self, capacity):
         # Your code here
         self.capacity = capacity
