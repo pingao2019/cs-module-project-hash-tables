@@ -1,15 +1,6 @@
 def word_count(s):
     # Your code here
 
-# 	counts = {}
-# 	for c in s:
-
-# 		if c not in counts:
-
-# 			counts[c] = 0
-# ​		  counts[c] += 1
-		
-# 	return counts
     lowercase = s.lower()
 
     word_count = {}
