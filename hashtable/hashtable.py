@@ -13,15 +13,10 @@ MIN_CAPACITY = 8
 
 
 class HashTable:
-    """
-    A hash table that with `capacity` buckets
-    that accepts string keys
-
-    Implement this.
-    """
+    
 
     def __init__(self, capacity):
-        # Your code here
+        
 
 
     def get_num_slots(self):
